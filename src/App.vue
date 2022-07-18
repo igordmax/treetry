@@ -1,26 +1,46 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<ul class="cd-accordion-menu">
+  <TreeComponent/>
+</ul>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+let treeData= {
 
+        name: "group",        
+  children: [
+    {
+      name: "Sub Group",
+      children: [{ name: "Item" }, { name: "Item" }]
+    },
+     {
+      name: "Sub Group1",
+      children: [
+        { name: "Item1" }, 
+        { name: "Item1", 
+         children: [
+           {name: "subsub"}
+         ]
+        }
+      ]
+     },
+    { name: "Item" }
+  ] 
+                };
+import TreeComponent from './components/TreeComponent.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    TreeComponent
+  },
+  data: function() {
+    return {
+      treeData: treeData
+    }
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
