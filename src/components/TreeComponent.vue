@@ -1,4 +1,5 @@
 <template>
+
 <li :class="[isFolder ? 'folder' : 'file']">
     <label id=clickToAct @click="makeActive">
       <button>
@@ -17,6 +18,7 @@
       </TreeComponent>    
     </ul>
   </li>
+
 </template>
 
 <script>

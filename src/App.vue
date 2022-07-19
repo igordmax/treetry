@@ -1,11 +1,10 @@
 <template>
- <div class="container center" id="demo">
+ <div class="container center">
   
   <ul class="cd-accordion-menu">
     
-    <TreeComponent :model="treeData"></TreeComponent>
-    
-  </ul>
+<TreeComponent :model="TreeComponent"></TreeComponent>
+</ul>
 </div>
 </template>
 
