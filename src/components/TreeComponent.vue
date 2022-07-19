@@ -1,32 +1,5 @@
 <template>
-  <TreeComponent :model="treeData"></TreeComponent>
-</template>
-
-<script>
-
-export default {
-  name: 'TreeComponent',
-  props: {
-    model: Object
-  },
-  
-  computed: {
-    isFolder: function(){
-     return this.model.children && this.model.children.length;
-    }
-  },
-  methods: {
-    stopClick: function (e) {
-      e.preventDefault();
-    },
-    toggle: function () {
-      if (this.isFolder) {
-        this.open= !this.open;
-      }
-    }
-  },
-  template: `
-  <li :class="[isFolder ? 'folder' : 'file']">
+<li :class="[isFolder ? 'folder' : 'file']">
     <label id=clickToAct @click="makeActive">
       <button>
         <span :class="{'open': open}"
@@ -41,9 +14,59 @@ export default {
         v-for="(model, index) in model.children"
         :key="index"
         :model="model">
-      <TreeComponent>    
+      </TreeComponent>    
     </ul>
-  </li>`
+  </li>
+</template>
+
+<script>
+let treeData= {
+
+        name: "group",        
+  children: [
+    {
+      name: "Sub Group",
+      children: [{ name: "Item" }, { name: "Item" }]
+    },
+     {
+      name: "Sub Group1",
+      children: [
+        { name: "Item1" }, 
+        { name: "Item1", 
+         children: [
+           {name: "subsub"}
+         ]
+        }
+      ]
+     },
+    { name: "Item" }
+  ] 
+                };
+export default {
+  name: 'TreeComponent',
+  props: {
+    model: Object
+  },
+  data: function() {
+    return {
+      treeData: treeData
+    }
+  },  
+  computed: {
+    isFolder: function(){
+     return this.model.children && this.model.children.length;
+    }
+  },
+  methods: {
+    stopClick: function (e) {
+      e.preventDefault();
+    },
+    toggle: function () {
+      if (this.isFolder) {
+        this.open= !this.open;
+      }
+    }
+  }
 };
 
 </script>
