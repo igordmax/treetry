@@ -3,7 +3,7 @@
   
   <ul class="cd-accordion-menu">
     
-<TreeComponent :model="TreeComponent"></TreeComponent>
+<TreeComponent :model="treeData"></TreeComponent>
 </ul>
 </div>
 </template>
@@ -16,8 +16,35 @@ export default {
   components: {
     TreeComponent 
   },
+    data: function() {
+    return {
+      treeData: treeData
+    }
+  }, 
 
 };
+let treeData= {
+
+        name: "group",        
+  children: [
+    {
+      name: "Sub Group",
+      children: [{ name: "Item" }, { name: "Item" }]
+    },
+     {
+      name: "Sub Group1",
+      children: [
+        { name: "Item1" }, 
+        { name: "Item1", 
+         children: [
+           {name: "subsub"}
+         ]
+        }
+      ]
+     },
+    { name: "Item" }
+  ] 
+                };
 </script>
 
 <style>
